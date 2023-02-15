@@ -1,7 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [input, setInput] = useState("");
+  const [chatLog, setChatLog] = useState([]);
+
+  async function handleSubmit(e){
+    e.preventDefaul();
+    setChatLog([...chatLog,{user: "me", message: `${input}
+    `}])
+    setInput("");
+  }
+
   return (
     <div className="App">
     <aside className="sidemenu">
@@ -38,8 +50,14 @@ function App() {
       </div>
     </div>
       <div className="chat-input-holder">
-        <textarea
-        className="chat-input-textarea" placeholder="Type your messeage"></textarea>
+      <form onSubmit={handleSubmit}>
+        <input 
+        rows='1' 
+        value={input}
+        onChange={() => setInput(input) = e.target.value}
+        className="chat-input-textarea"></input>
+      </form>
+        
       </div>
     </section>
     </div>
