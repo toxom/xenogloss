@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/toxom/xenogloss#readme",
   "dependencies": {
+    "firebase": "^9.17.1",
     "normalize.css": "^8.0.1"
   }
 }
