@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+//import Navbar from "./components/Navigation";
 
 function App() {
-
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
@@ -25,6 +25,12 @@ function App() {
         New Chat
       </div>
     </aside>
+    <aside className="infomenu">
+      <div className="info-menu-button">
+      <span>+</span>
+        Project info
+      </div>
+    </aside>    
     <section className="chatbox">
     <div className="chat-log">
       {chatLog.map((message, index) => (
