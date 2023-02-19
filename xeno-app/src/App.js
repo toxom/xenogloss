@@ -2,10 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import React from 'react';
-//import Navbar from "./components/Navigation";
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import Navbar from "./components/Navbar";
 
 
 function App() {
+  <React.Fragment>
+    <Navbar/>
+  </React.Fragment>
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
@@ -13,7 +17,7 @@ function App() {
   }]);
 
   async function handleSubmit(e){
-    e.preventDefaul();
+    e.preventDefault();
     setChatLog([...chatLog,{user: "me", message: `${input}
     `} ])
     setInput("");
@@ -29,11 +33,19 @@ function App() {
     });
   const data = await response.json();
   console.log(data);
+
+
+
+
+
   }
 
   return (
-    <div className="App">
+
+
     
+    <div className="App">
+
     {/* <body>
 
     <h1>      
@@ -60,10 +72,12 @@ function App() {
 
     </body> */}
     <aside className="sidemenu">
-      <div className="side-menu-button">
-      <span>+</span>
-        New Chat
-      </div>
+      <ScrollView>
+        <div className="side-menu-button">
+        <span>+</span>
+          New Chat
+        </div>
+      </ScrollView>
     </aside>
     {/* <aside className="infomenu">
       <div className="info-menu-button">
@@ -80,32 +94,35 @@ function App() {
     <aside>
       <p>The Epcot center is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
     </aside> */}
-    <section className="chatbox">
-    <div className="chat-log">
-      {chatLog.map((message, index) => (
-        <ChatMessage key={index} message={message} />    
-      ))}
-      <div className="chat-message chatgpt">
-        <div className="chat-message-center">
-          <div className='avatar chatgpt'>
-            
-          </div>
-          <div className='message'>
-            I am an AI
+    <ScrollView>
+      <section className="chatbox">
+        
+      <div className="chat-log">
+        {chatLog.map((message, index) => (
+          <ChatMessage key={index} message={message} />    
+        ))}
+        <div className="chat-message chatgpt">
+          <div className="chat-message-center">
+            <div className='avatar chatgpt'>
+              
+            </div>
+            <div className='message'>
+              I am an AI
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      <div className="chat-input-holder">
-      <form onSubmit={handleSubmit}>
-        <input 
-        rows='1' 
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="chat-input-textarea"></input>
-      </form>
-      </div>
-    </section>
+        <div className="chat-input-holder">
+        <form onSubmit={handleSubmit}>
+          <input 
+          rows='1' 
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="chat-input-textarea"></input>
+        </form>
+        </div>
+      </section>
+      </ScrollView>
     </div>
   );
 }
