@@ -11,9 +11,6 @@ const openai = new OpenAIApi(configuration);
 
 // add body parser and corrs to express
 
-
-const app 
-
 // app.use(express.json())
 // app.use(express.urlencoded({ extended: true}))
 const app = express()
@@ -21,14 +18,14 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
-const port =  3080
+const port =  3008
 
 app.post('/', async (req, res) => {
     // console.log(message)
     const {message} = req.body;
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt:`${message},
+        prompt:`${message}`,
         max_tokens: 7,
         temperature: 0.5,
     });

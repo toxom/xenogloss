@@ -22,7 +22,7 @@ function App() {
     `} ])
     setInput("");
     //fetch response to te api combining the chat log array of messages and sending it as a message to localhost:3000 as a post
-    const response = await fetch("http://localhost:3080", {
+    const response = await fetch("http://localhost:3008", {
       method: "POST",
       headers: {
         "Content-Type": "application/json" 
