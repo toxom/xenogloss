@@ -32,11 +32,7 @@ function App() {
       })
     });
   const data = await response.json();
-  console.log(data);
-
-
-
-
+  setChatLog([...chatLog, { user: "gpt", message: `${data.message}`}])
 
   }
 
@@ -77,7 +73,7 @@ function App() {
         <span>+</span>
           New Chat
         </div>
-      </ScrollView>
+        </ScrollView>
     </aside>
     {/* <aside className="infomenu">
       <div className="info-menu-button">
